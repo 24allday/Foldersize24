@@ -1,0 +1,10 @@
+# FolderSize24
+# Bash edition
+# Tools for the community
+# Author 24bkdoor
+
+ls -lt --time=creation | while read line; do
+    folder=$(echo "$line" | awk '{print $NF}')
+    size=$(du -sh "$folder" | awk '{print $1}')
+    echo -e "$line\t$size"
+done
